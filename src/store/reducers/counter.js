@@ -1,9 +1,8 @@
-import * as actionTypes from './actions';
+import * as actionTypes from '../actions';
 const initialState={
-    counter:0,
-    result:[]
+    counter:0
 }
-const reduer=(state=initialState,action)=>{
+const counterReduer=(state=initialState,action)=>{
     switch(action.type){
         case actionTypes.INCREMENT:
             return {
@@ -20,18 +19,7 @@ const reduer=(state=initialState,action)=>{
                 ...state,
                 counter: state.counter+action.value
             }
-        case actionTypes.STORE_RESULT:
-            return {
-                ...state,
-                result: state.result.concat(state.counter)
-            }
-        case actionTypes.DELETE_RESULT:
-            return {
-                ...state,
-                result: state.result.filter((item,index)=>index!==action.index)
-            }
     }
     return state;
 }
-
-export default reduer;
+export default counterReduer;
